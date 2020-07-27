@@ -17,7 +17,7 @@ export function createRequest(token = '') {
       }
       return config;
     },
-    error => Promise.reject(error),
+    (error) => Promise.reject(error),
   );
 
   service.interceptors.response.use(
@@ -25,7 +25,7 @@ export function createRequest(token = '') {
       response.data = humps.camelizeKeys(response.data);
       return response;
     },
-    error => Promise.reject(error),
+    (error) => Promise.reject(error),
   );
 
   return service;

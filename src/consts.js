@@ -23,7 +23,6 @@ export const MessageType = {
   Attachment: 4,
 };
 
-
 // Common Event
 export const MessageEvent = 101;
 export const MessageListEvent = 102;

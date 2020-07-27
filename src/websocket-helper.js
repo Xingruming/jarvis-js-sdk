@@ -25,7 +25,6 @@ export class WebsocketHelper {
 
   #unreadMessages = {};
 
-
   constructor(handler, options) {
     this.handler = handler;
     this.token = options.token;
@@ -202,14 +201,14 @@ export class WebsocketHelper {
     }, {});
     const otherUserId = this.#userInfoMap.me.userType === 'CUSTOMER' ? lastStaff.id : customer.id;
     const lrmId = lrmIds[otherUserId];
-    const messages = conversation.messages.map(message => this.parseMessage(message, lrmId));
+    const messages = conversation.messages.map((message) => this.parseMessage(message, lrmId));
     const myUserId = this.#userInfoMap.me.id;
     const myLrmIdx = conversation.messages
-      .findIndex(item => item.id === lrmIds[myUserId]);
+      .findIndex((item) => item.id === lrmIds[myUserId]);
     let unreadCount = 0;
     if (myLrmIdx === -1) {
       unreadCount = messages.slice(myLrmIdx + 1)
-        .filter(message => message.direction).length;
+        .filter((message) => message.direction).length;
     }
     return {
       users,
@@ -253,13 +252,11 @@ export class WebsocketHelper {
     };
     if (isSystemMessage) {
       result.isSystemMessage = true;
+    } else if (fromUserInfo) {
+      if (myUserInfo.userType === 'CUSTOMER') result.direction = +((fromUserInfo.id) !== myUserInfo.id);
+      else result.direction = +(fromUserInfo.userType === 'CUSTOMER');
     } else {
-      if (fromUserInfo) {
-        if (myUserInfo.userType === 'CUSTOMER') result.direction = +((fromUserInfo.id) !== myUserInfo.id);
-        else result.direction = +(fromUserInfo.userType === 'CUSTOMER');
-      } else {
-        result.direction = 1;
-      }
+      result.direction = 1;
     }
     return result;
   }

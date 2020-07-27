@@ -167,7 +167,7 @@ export class Client {
       params,
     }).then((res) => {
       res.data.conversations = res.data.conversations
-        .map(item => this.#websocketHelper.parseConversation(item));
+        .map((item) => this.#websocketHelper.parseConversation(item));
       return res;
     });
   }
