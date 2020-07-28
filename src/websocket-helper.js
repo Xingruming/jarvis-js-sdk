@@ -101,6 +101,7 @@ export class WebsocketHelper {
   }
 
   processEvent(event) {
+    // eslint-disable-next-line no-console
     if (this.debug) console.info('Received event:', event);
     event = humps.camelizeKeys(event);
     switch (event.eventType) {
@@ -152,6 +153,7 @@ export class WebsocketHelper {
         payload,
       };
       event = humps.decamelizeKeys(event);
+      // eslint-disable-next-line no-console
       if (this.debug) console.info('Send event:', event);
       this.websocket.send(JSON.stringify(event));
       this.#unconfirmedEvents[this.sequenceId] = {
