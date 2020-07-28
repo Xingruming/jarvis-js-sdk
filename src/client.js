@@ -242,19 +242,19 @@ export class Client {
   }
 
   getQuickReply() {
-    return this.#request.get('/common_words');
+    return this.#request.get('/im/common_words');
   }
 
   addQuickReply(data) {
-    return this.#request.post('/common_words', data);
+    return this.#request.post('/im/common_words', data);
   }
 
   editQuickReply(id, data) {
-    return this.#request.put(`/common_words/${id}`, data);
+    return this.#request.put(`/im/common_words/${id}`, data);
   }
 
   deleteQuickReply(id) {
-    return this.#request.delete(`/common_words/${id}`);
+    return this.#request.delete(`/im/common_words/${id}`);
   }
 
   /**
