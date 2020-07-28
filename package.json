@@ -1,9 +1,11 @@
 {
   "name": "jarvis-js-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "dist/jarvis-js-sdk.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js --mode=production",
     "lint": "eslint ."
