@@ -190,8 +190,7 @@ export class WebsocketHelper {
   }
 
   parseConversation(conversation) {
-    const { customer } = conversation;
-    const { lastStaff } = conversation;
+    const { customer, lastStaff } = conversation;
     const users = conversation.users.reduce((m, obj) => {
       m[obj.id] = obj;
       this.setUserInfo(obj.id, obj);
@@ -213,14 +212,10 @@ export class WebsocketHelper {
         .filter((message) => message.direction).length;
     }
     return {
+      ...conversation,
       users,
       unreadCount,
       customer,
-      lastStaff,
-      messages,
-      id: conversation.id,
-      createdAt: conversation.createdAt,
-      state: conversation.state,
     };
   }
 

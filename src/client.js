@@ -241,6 +241,22 @@ export class Client {
     return this.#request.delete(`/im/users/${id}/tags/${tagId}`);
   }
 
+  getQuickReply() {
+    return this.#request.get('/common_words');
+  }
+
+  addQuickReply(data) {
+    return this.#request.post('/common_words', data);
+  }
+
+  editQuickReply(id, data) {
+    return this.#request.put(`/common_words/${id}`, data);
+  }
+
+  deleteQuickReply(id) {
+    return this.#request.delete(`/common_words/${id}`);
+  }
+
   /**
    * 上传附件
    * @param file 文件
