@@ -215,7 +215,7 @@ export class WebsocketHelper {
       ...conversation,
       users,
       unreadCount,
-      customer,
+      messages,
     };
   }
 
