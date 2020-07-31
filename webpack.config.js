@@ -8,7 +8,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: {
-    'jarvis-js-sdk': './src/index.js',
+    'jarvis-js-sdk': './src/client.js',
   },
   output: {
     path: resolve('dist'), // 输出目录
