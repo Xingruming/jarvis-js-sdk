@@ -82,6 +82,11 @@
         * [.addQuickReply(data)](#Client+addQuickReply) ⇒ <code>Promise</code>
         * [.editQuickReply(id, data)](#Client+editQuickReply) ⇒ <code>Promise</code>
         * [.deleteQuickReply(id)](#Client+deleteQuickReply) ⇒ <code>Promise</code>
+        * [.adminCloseConversation(id)](#Client+adminCloseConversation) ⇒ <code>\*</code>
+        * [.exportHistoryConversations(data)](#Client+exportHistoryConversations) ⇒ <code>Promise</code>
+        * [.getTransferServiceList(params)](#Client+getTransferServiceList) ⇒ <code>Promise</code>
+        * [.conversationTransfer(id, data)](#Client+conversationTransfer) ⇒ <code>Promise</code>
+        * [.requestConversations(data)](#Client+requestConversations) ⇒ <code>Promise</code>
         * [.uploadBlobs(file, onUploadProgress)](#Client+uploadBlobs) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken(userId)](#Client.getAnonymousToken) ⇒ <code>Promise</code>
@@ -367,6 +372,62 @@ WebSocket是否正在连接
 | Param | Type |
 | --- | --- |
 | id | <code>number</code> | 
+
+<a name="Client+adminCloseConversation"></a>
+
+### client.adminCloseConversation(id) ⇒ <code>\*</code>
+管理员强制关闭会话
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | 会话ID |
+
+<a name="Client+exportHistoryConversations"></a>
+
+### client.exportHistoryConversations(data) ⇒ <code>Promise</code>
+导出历史会话
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| data | 
+
+<a name="Client+getTransferServiceList"></a>
+
+### client.getTransferServiceList(params) ⇒ <code>Promise</code>
+获取客服用户列表（转接使用）
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| params | 
+
+<a name="Client+conversationTransfer"></a>
+
+### client.conversationTransfer(id, data) ⇒ <code>Promise</code>
+会话转接
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| id | 
+| data | 
+
+<a name="Client+requestConversations"></a>
+
+### client.requestConversations(data) ⇒ <code>Promise</code>
+历史会话发起会话
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| data | 
 
 <a name="Client+uploadBlobs"></a>
 

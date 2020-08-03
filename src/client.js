@@ -93,8 +93,6 @@ import { createRequest } from './request';
  * @callback OnMultipleLogin
  */
 
-
-
 class Client {
   #websocketHelper
 
@@ -383,6 +381,52 @@ class Client {
    */
   deleteQuickReply(id) {
     return this.#request.delete(`/im/common_words/${id}`);
+  }
+
+  /**
+   * 管理员强制关闭会话
+   * @param {number} id 会话ID
+   * @returns {*}
+   */
+  adminCloseConversation(id) {
+    return this.#request.put(`/im/conversations/${id}/terminate`);
+  }
+
+  /**
+   * 导出历史会话
+   * @param data
+   * @returns {Promise}
+   */
+  exportHistoryConversations(data) {
+    return this.#request.post('/im/conversations/export', data);
+  }
+
+  /**
+   * 获取客服用户列表（转接使用）
+   * @param params
+   * @returns {Promise}
+   */
+  getTransferServiceList(params) {
+    return this.#request.get('/im/users', { params });
+  }
+
+  /**
+   * 会话转接
+   * @param id
+   * @param data
+   * @returns {Promise}
+   */
+  conversationTransfer(id, data) {
+    return this.#request.put(`/im/conversations/${id}/transfer`, data);
+  }
+
+  /**
+   * 历史会话发起会话
+   * @param data
+   * @returns {Promise}
+   */
+  requestConversations(data) {
+    return this.#request.post('/im/conversations', data);
   }
 
   /**
