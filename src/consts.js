@@ -17,6 +17,7 @@ export const MessageType = {
   106: 'RateInviteError',
   107: 'StaffBusyEvent',
   108: 'StaffOfflineEvent',
+  109: 'ConversationTransfer',
   Text: 1,
   Image: 2,
   Video: 3,

@@ -47,6 +47,9 @@
 <dt><a href="#OnMultipleLogin">OnMultipleLogin</a> : <code>function</code></dt>
 <dd><p>多端登录回调函数</p>
 </dd>
+<dt><a href="#OnConversationTransfer">OnConversationTransfer</a> : <code>function</code></dt>
+<dd><p>会话转接回调函数</p>
+</dd>
 </dl>
 
 <a name="Client"></a>
@@ -111,6 +114,7 @@
 | handler.onStaffBusy | [<code>OnStaffBusy</code>](#OnStaffBusy) | 客服繁忙回调函数 |
 | handler.onStaffOffline | [<code>OnStaffOffline</code>](#OnStaffOffline) | 客服不在线回调函数 |
 | handler.onMultipleLogin | [<code>OnMultipleLogin</code>](#OnMultipleLogin) | 多端登录回调函数 |
+| handler.onConversationTransfer | [<code>OnConversationTransfer</code>](#OnConversationTransfer) | 会话转接回调函数 |
 | options | <code>Object</code> | 参数 |
 | options.token | <code>string</code> | Token |
 | options.subChannelId | <code>number</code> | 子渠道ID |
@@ -581,5 +585,11 @@ WebSocket错误回调函数
 
 ## OnMultipleLogin : <code>function</code>
 多端登录回调函数
+
+**Kind**: global typedef  
+<a name="OnConversationTransfer"></a>
+
+## OnConversationTransfer : <code>function</code>
+会话转接回调函数
 
 **Kind**: global typedef  

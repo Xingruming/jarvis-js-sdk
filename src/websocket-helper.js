@@ -97,6 +97,11 @@ export class WebsocketHelper {
           this.handler.onStaffOffline();
         }
         break;
+      case 'ConversationTransfer':
+        if (this.handler.onConversationTransfer) {
+          this.handler.onConversationTransfer();
+        }
+        break;
     }
   }
 
@@ -201,16 +206,13 @@ export class WebsocketHelper {
       return m;
     }, {});
     const otherUserId = this.#userInfoMap.me.userType === 'CUSTOMER' ? lastStaff.id : customer.id;
-    const lrmId = lrmIds[otherUserId];
-    const messages = conversation.messages.map((message) => this.parseMessage(message, lrmId));
+    const messages = conversation.messages
+      .map((message) => this.parseMessage(message, lrmIds[otherUserId]));
     const myUserId = this.#userInfoMap.me.id;
     const myLrmIdx = conversation.messages
       .findIndex((item) => item.id === lrmIds[myUserId]);
-    let unreadCount = 0;
-    if (myLrmIdx === -1) {
-      unreadCount = messages.slice(myLrmIdx + 1)
-        .filter((message) => message.direction).length;
-    }
+    const unreadCount = messages.slice(myLrmIdx + 1)
+      .filter((message) => message.direction).length;
     return {
       ...conversation,
       users,

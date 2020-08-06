@@ -93,6 +93,11 @@ import { createRequest } from './request';
  * @callback OnMultipleLogin
  */
 
+/**
+ * 会话转接回调函数
+ * @callback OnConversationTransfer
+ */
+
 class Client {
   #websocketHelper
 
@@ -112,6 +117,7 @@ class Client {
    * @param {OnStaffBusy} handler.onStaffBusy 客服繁忙回调函数
    * @param {OnStaffOffline} handler.onStaffOffline 客服不在线回调函数
    * @param {OnMultipleLogin} handler.onMultipleLogin 多端登录回调函数
+   * @param {OnConversationTransfer} handler.onConversationTransfer 会话转接回调函数
    * @param {Object} options 参数
    * @param {string} options.token Token
    * @param {number} options.subChannelId 子渠道ID
