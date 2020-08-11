@@ -41,7 +41,9 @@ export class WebsocketHelper {
   }
 
   open() {
-    let url = `wss://${window.location.host}${BASE_URL}/im/ws?token=${encodeURIComponent(this.token)}`;
+    let protocol = 'wss';
+    if (window.location.protocol === 'http:') protocol = 'ws';
+    let url = `${protocol}://${window.location.host}${BASE_URL}/im/ws?token=${encodeURIComponent(this.token)}`;
     if (this.subChannelId) url = `${url}&sub_channel_id=${this.subChannelId}`;
     this.websocket = new WebSocket(url);
     this.websocket.onopen = this.handler.onOpen;
