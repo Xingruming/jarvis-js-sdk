@@ -90,6 +90,7 @@
         * [.getTransferServiceList(params)](#Client+getTransferServiceList) ⇒ <code>Promise</code>
         * [.conversationTransfer(id, data)](#Client+conversationTransfer) ⇒ <code>Promise</code>
         * [.requestConversations(data)](#Client+requestConversations) ⇒ <code>Promise</code>
+        * [.getConversationsCount(params)](#Client+getConversationsCount) ⇒ <code>Promise</code>
         * [.uploadBlobs(file, onUploadProgress)](#Client+uploadBlobs) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken(userId)](#Client.getAnonymousToken) ⇒ <code>Promise</code>
@@ -433,6 +434,17 @@ WebSocket是否正在连接
 | --- |
 | data | 
 
+<a name="Client+getConversationsCount"></a>
+
+### client.getConversationsCount(params) ⇒ <code>Promise</code>
+获取会话统计
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| params | 
+
 <a name="Client+uploadBlobs"></a>
 
 ### client.uploadBlobs(file, onUploadProgress) ⇒ <code>Promise</code>
@@ -593,3 +605,8 @@ WebSocket错误回调函数
 会话转接回调函数
 
 **Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| conversationId | <code>number</code> | 会话ID |
+

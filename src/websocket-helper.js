@@ -99,7 +99,7 @@ export class WebsocketHelper {
         break;
       case 'ConversationTransfer':
         if (this.handler.onConversationTransfer) {
-          this.handler.onConversationTransfer();
+          this.handler.onConversationTransfer(message.conversationId);
         }
         break;
     }

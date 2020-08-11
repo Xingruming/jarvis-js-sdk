@@ -96,6 +96,7 @@ import { createRequest } from './request';
 /**
  * 会话转接回调函数
  * @callback OnConversationTransfer
+ * @param {number} conversationId 会话ID
  */
 
 class Client {
@@ -433,6 +434,15 @@ class Client {
    */
   requestConversations(data) {
     return this.#request.post('/im/conversations', data);
+  }
+
+  /**
+   * 获取会话统计
+   * @param params
+   * @returns {Promise}
+   */
+  getConversationsCount(params) {
+    return this.#request.get('/im/conversations_count', { params });
   }
 
   /**
