@@ -18,6 +18,7 @@ export const MessageType = {
   107: 'StaffBusyEvent',
   108: 'StaffOfflineEvent',
   109: 'ConversationTransfer',
+  110: 'CustomerRate',
   Text: 1,
   Image: 2,
   Video: 3,
