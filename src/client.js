@@ -173,6 +173,7 @@ class Client {
   buildMessage(messageType, content, conversationId) {
     const myUserInfo = this.#websocketHelper.getCachedUserInfo('me');
     return {
+      id: 0,
       fromId: myUserInfo.id,
       nickname: myUserInfo.nickname,
       content,
