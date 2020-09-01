@@ -226,7 +226,7 @@ export class WebsocketHelper {
   parseMessage(message, lrmId) {
     const isSystemMessage = message.messageType >= 100;
     let { content } = message;
-    if (message.messageType === 8) message.messageType = 1;
+    if (message.messageType === 6) message.messageType = 1;
     if (content) {
       if (message.messageType !== 1) {
         content = JSON.parse(message.content);
