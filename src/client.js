@@ -466,17 +466,11 @@ class Client {
 
   /**
    * 获取匿名Token
-   * @param {number} userId 用户Id
    * @returns {Promise}
    */
-  static getAnonymousToken(userId) {
+  static getAnonymousToken() {
     const request = createRequest();
-    return request.post('/im/tokens', {
-      appId: 'u5xDbdGkyBcwKtN4usXutH4CyZ5V6mNw',
-      appSecret: 'Qt9umufWkr6beE55UF7SzECE8DXSfZAS',
-      userId,
-      nickname: userId,
-    });
+    return request.post('/im/tokens');
   }
 }
 

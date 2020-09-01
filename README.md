@@ -93,7 +93,7 @@
         * [.getConversationsCount(params)](#Client+getConversationsCount) ⇒ <code>Promise</code>
         * [.uploadBlobs(file, onUploadProgress)](#Client+uploadBlobs) ⇒ <code>Promise</code>
     * _static_
-        * [.getAnonymousToken(userId)](#Client.getAnonymousToken) ⇒ <code>Promise</code>
+        * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
 <a name="new_Client_new"></a>
 
@@ -459,15 +459,10 @@ WebSocket是否正在连接
 
 <a name="Client.getAnonymousToken"></a>
 
-### Client.getAnonymousToken(userId) ⇒ <code>Promise</code>
+### Client.getAnonymousToken() ⇒ <code>Promise</code>
 获取匿名Token
 
 **Kind**: static method of [<code>Client</code>](#Client)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| userId | <code>number</code> | 用户Id |
-
 <a name="OnOpen"></a>
 
 ## OnOpen : <code>function</code>
