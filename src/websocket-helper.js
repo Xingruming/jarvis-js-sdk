@@ -225,42 +225,47 @@ export class WebsocketHelper {
 
   parseMessage(message, lrmId) {
     const isSystemMessage = message.messageType >= 100;
-    let { content } = message;
-    if (content) {
-      try {
-        content = JSON.parse(message.content);
-        content = humps.camelizeKeys(content);
-        if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
-          content.nickname = this.#userInfoMap[content.userId].nickname;
-          content.userType = this.#userInfoMap[content.userId].userType;
-        }
-      } catch (e) {
+    let content;
+    if (message.content) {
+      if (message.messageType === 1 || message.messageType === 6 || message.messageType === 8) {
         content = message.content;
+      } else {
+        try {
+          content = JSON.parse(message.content);
+          content = humps.camelizeKeys(content);
+          if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
+            content.nickname = this.#userInfoMap[content.userId].nickname;
+            content.userType = this.#userInfoMap[content.userId].userType;
+          }
+        } catch (e) {
+          content = message.content;
+        }
       }
     }
 
     const fromUserInfo = this.#userInfoMap[message.fromId];
     const myUserInfo = this.#userInfoMap.me;
 
-    const result = {
+    let direction = 1;
+    if (!isSystemMessage) {
+      if (fromUserInfo) {
+        if (myUserInfo.userType === 'CUSTOMER') direction = +((fromUserInfo.id) !== myUserInfo.id);
+        else direction = +(fromUserInfo.userType === 'CUSTOMER');
+      }
+    }
+
+    return {
+      isSystemMessage,
+      direction,
+      content,
       id: message.id,
       fromId: message.fromId,
       nickname: fromUserInfo && fromUserInfo.nickname,
       messageType: MessageType[message.messageType],
       createdAt: message.createdAt,
-      content,
       isRead: message.id <= lrmId,
       conversationId: message.conversationId,
     };
-    if (isSystemMessage) {
-      result.isSystemMessage = true;
-    } else if (fromUserInfo) {
-      if (myUserInfo.userType === 'CUSTOMER') result.direction = +((fromUserInfo.id) !== myUserInfo.id);
-      else result.direction = +(fromUserInfo.userType === 'CUSTOMER');
-    } else {
-      result.direction = 1;
-    }
-    return result;
   }
 
   onMessageRead(msgId, convId) {
