@@ -9,6 +9,10 @@ export const MessageType = {
   3: 'Video',
   4: 'Attachment',
   5: 'ChannelMenu',
+  6: 'RobotChitchatMessage',
+  7: 'RobotCanAnswerMessage',
+  8: 'RobotNotAnswerMessage',
+  9: 'RobotMayAnswerMessage',
   101: 'ManualServiceStart',
   102: 'ConversationBuilt',
   103: 'MessageRecall',
@@ -30,6 +34,7 @@ export const MessageEvent = 101;
 export const MessageListEvent = 102;
 export const AckEvent = 103;
 export const MessageReadEvent = 104;
+export const InputtingEvent = 105;
 
 // Request Event
 export const PingEvent = 201;
