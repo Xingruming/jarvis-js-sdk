@@ -46,10 +46,10 @@ export class WebsocketHelper {
     let url = `${protocol}://${window.location.host}${BASE_URL}/im/ws?token=${encodeURIComponent(this.token)}`;
     if (this.subChannelId) url = `${url}&sub_channel_id=${this.subChannelId}`;
     this.websocket = new WebSocket(url);
-    this.websocket.onopen = this.handler.onOpen;
+    this.websocket.onopen = () => { this.handler.onOpen(); };
     this.websocket.onclose = this.onWebsocketClose;
     this.websocket.onmessage = this.onWebsocketMessage;
-    this.websocket.onerror = this.handler.onError;
+    this.websocket.onerror = (e) => { this.handler.onError(e); };
     this.setPingTimer();
   }
 
