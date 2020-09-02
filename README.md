@@ -545,6 +545,7 @@ WebSocket错误回调函数
 | conversationId | <code>number</code> | 会话ID |
 | userId | <code>number</code> | 用户ID |
 | nickname | <code>string</code> | 用户名 |
+| userType | <code>string</code> | 用户类型 |
 
 <a name="OnConversationClosed"></a>
 

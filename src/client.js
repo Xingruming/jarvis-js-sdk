@@ -57,6 +57,7 @@ import { createRequest } from './request';
  * @param {number} conversationId 会话ID
  * @param {number} userId 用户ID
  * @param {string} nickname 用户名
+ * @param {string} userType 用户类型
  */
 
 /**

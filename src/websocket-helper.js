@@ -71,7 +71,7 @@ export class WebsocketHelper {
       case 'ConversationBuilt':
         if (this.handler.onConversationBuilt) {
           this.handler.onConversationBuilt(message.conversationId,
-            message.content.userId, message.content.nickname);
+            message.content.userId, message.content.nickname, message.content.userType);
         }
         break;
       case 'ConversationEnd':
