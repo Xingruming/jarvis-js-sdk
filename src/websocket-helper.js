@@ -214,7 +214,7 @@ export class WebsocketHelper {
     const myLrmIdx = conversation.messages
       .findIndex((item) => item.id === lrmIds[myUserId]);
     const unreadCount = messages.slice(myLrmIdx + 1)
-      .filter((message) => message.direction).length;
+      .filter((message) => message.direction && !message.isSystemMessage).length;
     return {
       ...conversation,
       users,
@@ -249,7 +249,7 @@ export class WebsocketHelper {
     let direction = 1;
     if (!isSystemMessage) {
       if (fromUserInfo) {
-        if (myUserInfo.userType === 'CUSTOMER') direction = +((fromUserInfo.id) !== myUserInfo.id);
+        if (myUserInfo.userType === 'CUSTOMER') direction = +(fromUserInfo.userType !== 'CUSTOMER');
         else direction = +(fromUserInfo.userType === 'CUSTOMER');
       }
     }
