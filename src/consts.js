@@ -13,6 +13,7 @@ export const MessageType = {
   7: 'RobotCanAnswerMessage',
   8: 'RobotNotAnswerMessage',
   9: 'RobotMayAnswerMessage',
+  10: 'FAQAnswerMessage',
   101: 'ManualServiceStart',
   102: 'ConversationBuilt',
   103: 'MessageRecall',

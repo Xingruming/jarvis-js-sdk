@@ -227,19 +227,15 @@ export class WebsocketHelper {
     const isSystemMessage = message.messageType >= 100;
     let content;
     if (message.content) {
-      if (message.messageType === 1 || message.messageType === 6 || message.messageType === 8) {
-        content = message.content;
-      } else {
-        try {
-          content = JSON.parse(message.content);
-          content = humps.camelizeKeys(content);
-          if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
-            content.nickname = this.#userInfoMap[content.userId].nickname;
-            content.userType = this.#userInfoMap[content.userId].userType;
-          }
-        } catch (e) {
-          content = message.content;
+      try {
+        content = JSON.parse(message.content);
+        content = humps.camelizeKeys(content);
+        if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
+          content.nickname = this.#userInfoMap[content.userId].nickname;
+          content.userType = this.#userInfoMap[content.userId].userType;
         }
+      } catch (e) {
+        content = message.content;
       }
     }
 

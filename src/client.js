@@ -4,7 +4,7 @@ import {
   InviteRateEvent,
   RecallMessageEvent,
   MessageReadEvent,
-  SelectChannelMenuEvent,
+  SelectChannelMenuEvent, InputtingEvent,
 } from './consts';
 import { createRequest } from './request';
 
@@ -97,6 +97,13 @@ import { createRequest } from './request';
 /**
  * 会话转接回调函数
  * @callback OnConversationTransfer
+ * @param {number} conversationId 会话ID
+ */
+
+/**
+ * 会话转接回调函数
+ * @callback OnInputting
+ * @param {string} content 消息内容
  * @param {number} conversationId 会话ID
  */
 
@@ -239,6 +246,17 @@ class Client {
    */
   selectMenuItem(menuItemId) {
     return this.#websocketHelper.sendEvent(SelectChannelMenuEvent, { menuItemId });
+  }
+
+  /**
+   * 正在输入
+   * @param {string} content
+   * @param {number} conversationId
+   * @param {number} toId
+   * @returns {Promise}
+   */
+  inputting(content, conversationId, toId) {
+    return this.#websocketHelper.sendEvent(InputtingEvent, { content, conversationId, toId });
   }
 
   /**
@@ -472,6 +490,42 @@ class Client {
   static getAnonymousToken() {
     const request = createRequest();
     return request.post('/im/tokens');
+  }
+
+  /**
+   * 机器人满意回答
+   * @param id
+   * @returns {Promise}
+   */
+  likeRobotAnswer(id) {
+    return this.#request.post(`/im/robot_answers/${id}/like`);
+  }
+
+  /**
+   * 机器人不满意回答
+   * @param msgId
+   * @returns {Promise}
+   */
+  dislikeRobotAnswer(msgId) {
+    return this.#request.post(`/im/robot_answers/${msgId}/dislike`);
+  }
+
+  /**
+   * 问题自动补全
+   * @param query
+   * @returns {Promise}
+   */
+  getSuggestions(query) {
+    return this.#request.get(`/im/questions/suggest?query=${query}`);
+  }
+
+  /**
+   * 当前排队位置
+   * @param convId
+   * @returns {Promise}
+   */
+  getPendingPosition(convId) {
+    return this.#request.get(`/im/conversations/${convId}/pending_position`);
   }
 }
 
