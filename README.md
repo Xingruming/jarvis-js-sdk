@@ -50,6 +50,9 @@
 <dt><a href="#OnConversationTransfer">OnConversationTransfer</a> : <code>function</code></dt>
 <dd><p>会话转接回调函数</p>
 </dd>
+<dt><a href="#OnInputting">OnInputting</a> : <code>function</code></dt>
+<dd><p>会话转接回调函数</p>
+</dd>
 </dl>
 
 <a name="Client"></a>
@@ -71,6 +74,7 @@
         * [.closeConversation(conversationId)](#Client+closeConversation) ⇒ <code>Promise</code>
         * [.inviteRate(userId)](#Client+inviteRate) ⇒ <code>Promise</code>
         * [.selectMenuItem(menuItemId)](#Client+selectMenuItem) ⇒ <code>Promise</code>
+        * [.inputting(content, conversationId, toId)](#Client+inputting) ⇒ <code>Promise</code>
         * [.getUserInfo()](#Client+getUserInfo) ⇒ <code>Promise</code>
         * [.updateMyProfile(data)](#Client+updateMyProfile) ⇒ <code>Promise</code>
         * [.getConversations(params)](#Client+getConversations) ⇒ <code>Promise</code>
@@ -92,6 +96,10 @@
         * [.requestConversations(data)](#Client+requestConversations) ⇒ <code>Promise</code>
         * [.getConversationsCount(params)](#Client+getConversationsCount) ⇒ <code>Promise</code>
         * [.uploadBlobs(file, onUploadProgress)](#Client+uploadBlobs) ⇒ <code>Promise</code>
+        * [.likeRobotAnswer(id)](#Client+likeRobotAnswer) ⇒ <code>Promise</code>
+        * [.dislikeRobotAnswer(msgId)](#Client+dislikeRobotAnswer) ⇒ <code>Promise</code>
+        * [.getSuggestions(query)](#Client+getSuggestions) ⇒ <code>Promise</code>
+        * [.getPendingPosition(convId)](#Client+getPendingPosition) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
@@ -225,6 +233,19 @@ WebSocket是否正在连接
 | Param | Type |
 | --- | --- |
 | menuItemId | <code>number</code> | 
+
+<a name="Client+inputting"></a>
+
+### client.inputting(content, conversationId, toId) ⇒ <code>Promise</code>
+正在输入
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param | Type |
+| --- | --- |
+| content | <code>string</code> | 
+| conversationId | <code>number</code> | 
+| toId | <code>number</code> | 
 
 <a name="Client+getUserInfo"></a>
 
@@ -457,6 +478,50 @@ WebSocket是否正在连接
 | file | <code>File</code> | 文件 |
 | onUploadProgress | <code>function</code> | 回调函数 |
 
+<a name="Client+likeRobotAnswer"></a>
+
+### client.likeRobotAnswer(id) ⇒ <code>Promise</code>
+机器人满意回答
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| id | 
+
+<a name="Client+dislikeRobotAnswer"></a>
+
+### client.dislikeRobotAnswer(msgId) ⇒ <code>Promise</code>
+机器人不满意回答
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| msgId | 
+
+<a name="Client+getSuggestions"></a>
+
+### client.getSuggestions(query) ⇒ <code>Promise</code>
+问题自动补全
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| query | 
+
+<a name="Client+getPendingPosition"></a>
+
+### client.getPendingPosition(convId) ⇒ <code>Promise</code>
+当前排队位置
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| convId | 
+
 <a name="Client.getAnonymousToken"></a>
 
 ### Client.getAnonymousToken() ⇒ <code>Promise</code>
@@ -604,5 +669,17 @@ WebSocket错误回调函数
 
 | Param | Type | Description |
 | --- | --- | --- |
+| conversationId | <code>number</code> | 会话ID |
+
+<a name="OnInputting"></a>
+
+## OnInputting : <code>function</code>
+会话转接回调函数
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| content | <code>string</code> | 消息内容 |
 | conversationId | <code>number</code> | 会话ID |
 

@@ -225,17 +225,12 @@ export class WebsocketHelper {
 
   parseMessage(message, lrmId) {
     const isSystemMessage = message.messageType >= 100;
-    let content;
-    if (message.content) {
-      try {
-        content = JSON.parse(message.content);
-        content = humps.camelizeKeys(content);
-        if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
-          content.nickname = this.#userInfoMap[content.userId].nickname;
-          content.userType = this.#userInfoMap[content.userId].userType;
-        }
-      } catch (e) {
-        content = message.content;
+    let { content } = message;
+    if (content) {
+      content = humps.camelizeKeys(content);
+      if (content.userId && !content.nickname && this.#userInfoMap[content.userId]) {
+        content.nickname = this.#userInfoMap[content.userId].nickname;
+        content.userType = this.#userInfoMap[content.userId].userType;
       }
     }
 
