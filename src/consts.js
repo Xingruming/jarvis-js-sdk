@@ -32,7 +32,6 @@ export const MessageType = {
 
 // Common Event
 export const MessageEvent = 101;
-export const MessageListEvent = 102;
 export const AckEvent = 103;
 export const MessageReadEvent = 104;
 export const InputtingEvent = 105;

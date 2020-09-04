@@ -3,12 +3,11 @@ import {
   BASE_URL,
   PONG_TIMEOUT,
   PING_INTERVAL,
-  MessageListEvent,
   MultipleLoginEvent,
   AckEvent,
   PingEvent,
   MessageType,
-  MessageEvent, MessageReadEvent,
+  MessageEvent, MessageReadEvent, InputtingEvent,
 } from './consts';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -109,25 +108,27 @@ export class WebsocketHelper {
 
   processEvent(event) {
     // eslint-disable-next-line no-console
-    if (this.debug) console.info('Received event:', event);
+    if (this.debug && event.eventType !== AckEvent) console.info('Received event:', event);
     event = humps.camelizeKeys(event);
     switch (event.eventType) {
       case MessageEvent:
         this.processMessage(event.payload);
         break;
-      case MessageListEvent:
-        event.payload.forEach((item) => {
-          this.processMessage(item);
-        });
-        break;
       case MultipleLoginEvent:
-        this.handler.onMultipleLogin();
+        if (this.handler.onMultipleLogin) {
+          this.handler.onMultipleLogin();
+        }
         break;
       case AckEvent:
         this.ackEvent(event.payload);
         break;
       case MessageReadEvent:
         this.onMessageRead(event.payload.messageId, event.payload.conversationId);
+        break;
+      case InputtingEvent:
+        if (this.handler.onInputting) {
+          this.handler.onInputting(event.payload.content, event.payload.conversationId);
+        }
         break;
       default:
         this.handler.onError(event);
