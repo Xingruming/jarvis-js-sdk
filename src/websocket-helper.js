@@ -176,11 +176,8 @@ export class WebsocketHelper {
   }
 
   sendMessage(message, toId) {
-    let { content } = message;
+    const { content } = message;
     const messageType = MessageType[message.messageType];
-    if (messageType !== MessageType.Text) {
-      content = JSON.stringify(content);
-    }
     return this.sendEvent(MessageEvent, {
       messageType,
       content,
