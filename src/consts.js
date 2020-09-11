@@ -29,6 +29,7 @@ export const MessageType = {
   Image: 2,
   Video: 3,
   Attachment: 4,
+  OrderMessage: 11,
 };
 
 // Common Event
