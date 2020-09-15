@@ -29,6 +29,7 @@ export const MessageType = {
   Image: 2,
   Video: 3,
   Attachment: 4,
+  FAQAnswerMessage: 10,
   OrderMessage: 11,
 };
 
