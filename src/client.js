@@ -472,15 +472,28 @@ class Client {
    * @returns {Promise}
    */
   uploadBlobs(file, onUploadProgress) {
-    const params = new FormData();
-    params.append('file', file);
-    return this.#request.post('/blobs/upload', params, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      timeout: 5 * 60 * 1000,
-      onUploadProgress,
-    });
+    let id;
+    let url;
+    return this.#request.post('/presign_urls', {
+      filename: file.name,
+      content_type: file.type,
+      byte_size: file.size,
+    }).then((res) => {
+      id = res.data.blobId;
+      const { signedUrl } = res.data;
+      ({ url } = res.data);
+      const params = new FormData();
+      params.append('file', file);
+      return createRequest().post(signedUrl, params, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        timeout: 5 * 60 * 1000,
+        onUploadProgress,
+      });
+    }).then(() => ({
+      id, url,
+    }));
   }
 
   /**
@@ -488,8 +501,7 @@ class Client {
    * @returns {Promise}
    */
   static getAnonymousToken() {
-    const request = createRequest();
-    return request.post('/im/tokens');
+    return createRequest().post('/api/v1/im/tokens');
   }
 
   /**

@@ -5,7 +5,7 @@ import { BASE_URL } from './consts';
 // eslint-disable-next-line import/prefer-default-export
 export function createRequest(token = '') {
   const service = axios.create({
-    baseURL: BASE_URL,
+    baseURL: token && BASE_URL,
     timeout: 10000,
   });
 
