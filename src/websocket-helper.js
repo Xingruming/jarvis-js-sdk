@@ -65,6 +65,7 @@ export class WebsocketHelper {
   processMessage(message) {
     message = this.parseMessage(message, message.id);
     this.handler.onMessage(message);
+    this.onMessageRead(message.id, message.conversationId);
     // eslint-disable-next-line default-case
     switch (message.messageType) {
       case 'ConversationBuilt':
