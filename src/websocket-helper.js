@@ -243,19 +243,23 @@ export class WebsocketHelper {
         else direction = +(fromUserInfo.userType === 'CUSTOMER');
       }
     }
-
-    return {
+    const isRead = message.id <= lrmId;
+    const resultMessage = {
       isSystemMessage,
       direction,
       content,
+      isRead,
       id: message.id,
       fromId: message.fromId,
       nickname: fromUserInfo && fromUserInfo.nickname,
       messageType: MessageType[message.messageType],
       createdAt: message.createdAt,
-      isRead: message.id <= lrmId,
       conversationId: message.conversationId,
     };
+    if (!isRead) {
+      this.#unreadMessages[message.id] = resultMessage;
+    }
+    return resultMessage;
   }
 
   onMessageRead(msgId, convId) {
