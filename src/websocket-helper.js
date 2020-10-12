@@ -255,6 +255,7 @@ export class WebsocketHelper {
       messageType: MessageType[message.messageType],
       createdAt: message.createdAt,
       conversationId: message.conversationId,
+      hasRecommend: message.hasRecommend,
     };
     if (!isRead) {
       this.#unreadMessages[message.id] = resultMessage;
