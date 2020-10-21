@@ -545,7 +545,12 @@ class Client {
    * @returns {Promise}
    */
   getCurrentConversationList() {
-    return this.#request.get('/im/current_list');
+    return this.#request.get('/im/current_list')
+      .then((res) => {
+        res.data = res.data
+          .map((item) => this.#websocketHelper.parseConversation(item));
+        return res;
+      });
   }
 
   /**

@@ -114,7 +114,7 @@ export class WebsocketHelper {
         new Date().toLocaleString(),
         'Received event:',
         event.event_type,
-        event.payload && event.message_type,
+        (event.payload && event.payload.message_type) || 0,
         event,
       );
     }
@@ -175,6 +175,8 @@ export class WebsocketHelper {
         console.info(
           new Date().toLocaleString(),
           'Send event:',
+          event.event_type,
+          (event.payload && event.payload.message_type) || 0,
           event,
         );
       }
