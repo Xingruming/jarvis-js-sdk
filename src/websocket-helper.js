@@ -108,8 +108,16 @@ export class WebsocketHelper {
   }
 
   processEvent(event) {
-    // eslint-disable-next-line no-console
-    if (this.debug && event.eventType !== AckEvent) console.info('Received event:', event);
+    if (this.debug && event.event_type !== AckEvent) {
+      // eslint-disable-next-line no-console
+      console.info(
+        new Date().toLocaleString(),
+        'Received event:',
+        event.event_type,
+        event.payload && event.message_type,
+        event,
+      );
+    }
     event = humps.camelizeKeys(event);
     switch (event.eventType) {
       case MessageEvent:
@@ -162,8 +170,14 @@ export class WebsocketHelper {
         payload,
       };
       event = humps.decamelizeKeys(event);
-      // eslint-disable-next-line no-console
-      if (this.debug) console.info('Send event:', event);
+      if (this.debug) {
+        // eslint-disable-next-line no-console
+        console.info(
+          new Date().toLocaleString(),
+          'Send event:',
+          event,
+        );
+      }
       this.websocket.send(JSON.stringify(event));
       this.#unconfirmedEvents[this.sequenceId] = {
         event,

@@ -539,6 +539,23 @@ class Client {
   getPendingPosition(convId) {
     return this.#request.get(`/im/conversations/${convId}/pending_position`);
   }
+
+  /**
+   * 获取当前会话列表
+   * @returns {Promise}
+   */
+  getCurrentConversationList() {
+    return this.#request.get('/im/current_list');
+  }
+
+  /**
+   * 获取渠道信息
+   * @param subChannelId
+   * @returns {Promise}
+   */
+  getSubChannel(subChannelId) {
+    return this.#request.get(`/client/sub_channels/${subChannelId}`);
+  }
 }
 
 export default Client;

@@ -100,6 +100,8 @@
         * [.dislikeRobotAnswer(msgId)](#Client+dislikeRobotAnswer) ⇒ <code>Promise</code>
         * [.getSuggestions(query)](#Client+getSuggestions) ⇒ <code>Promise</code>
         * [.getPendingPosition(convId)](#Client+getPendingPosition) ⇒ <code>Promise</code>
+        * [.getCurrentConversationList()](#Client+getCurrentConversationList) ⇒ <code>Promise</code>
+        * [.getSubChannel(subChannelId)](#Client+getSubChannel) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
@@ -521,6 +523,23 @@ WebSocket是否正在连接
 | Param |
 | --- |
 | convId | 
+
+<a name="Client+getCurrentConversationList"></a>
+
+### client.getCurrentConversationList() ⇒ <code>Promise</code>
+获取当前会话列表
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+<a name="Client+getSubChannel"></a>
+
+### client.getSubChannel(subChannelId) ⇒ <code>Promise</code>
+获取渠道信息
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| subChannelId | 
 
 <a name="Client.getAnonymousToken"></a>
 
