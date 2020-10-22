@@ -559,7 +559,7 @@ class Client {
    * @returns {Promise}
    */
   getSubChannel(subChannelId) {
-    return this.#request.get(`/client/sub_channels/${subChannelId}`);
+    return this.#request.get(`/client/channels/sub_channels/${subChannelId}`);
   }
 }
 
