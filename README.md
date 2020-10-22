@@ -102,6 +102,7 @@
         * [.getPendingPosition(convId)](#Client+getPendingPosition) ⇒ <code>Promise</code>
         * [.getCurrentConversationList()](#Client+getCurrentConversationList) ⇒ <code>Promise</code>
         * [.getSubChannel(subChannelId)](#Client+getSubChannel) ⇒ <code>Promise</code>
+        * [.getHotFaqs(groupID, limit, page)](#Client+getHotFaqs) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
@@ -540,6 +541,19 @@ WebSocket是否正在连接
 | Param |
 | --- |
 | subChannelId | 
+
+<a name="Client+getHotFaqs"></a>
+
+### client.getHotFaqs(groupID, limit, page) ⇒ <code>Promise</code>
+获取热门问题
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| groupID | 
+| limit | 
+| page | 
 
 <a name="Client.getAnonymousToken"></a>
 

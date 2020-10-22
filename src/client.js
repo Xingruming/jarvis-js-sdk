@@ -561,6 +561,23 @@ class Client {
   getSubChannel(subChannelId) {
     return this.#request.get(`/client/channels/sub_channels/${subChannelId}`);
   }
+
+  /**
+   * 获取热门问题
+   * @param groupID
+   * @param limit
+   * @param page
+   * @returns {Promise}
+   */
+  getHotFaqs(groupID, limit, page) {
+    return this.#request.get('/hot_faqs/', {
+      params: {
+        limit,
+        page,
+        group_id: groupID,
+      },
+    });
+  }
 }
 
 export default Client;
