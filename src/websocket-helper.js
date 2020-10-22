@@ -223,8 +223,12 @@ export class WebsocketHelper {
       return m;
     }, {});
     const otherUserId = this.#userInfoMap.me.userType === 'CUSTOMER' ? lastStaff.id : customer.id;
+    let lrmId = lrmIds[otherUserId];
+    if (lastStaff.userType === 'ROBOT' && conversation.messages.length) {
+      lrmId = conversation.messages[conversation.messages.length - 1].id;
+    }
     const messages = conversation.messages
-      .map((message) => this.parseMessage(message, lrmIds[otherUserId]));
+      .map((message) => this.parseMessage(message, lrmId));
     const myUserId = this.#userInfoMap.me.id;
     const myLrmIdx = conversation.messages
       .findIndex((item) => item.id === lrmIds[myUserId]);
@@ -259,10 +263,7 @@ export class WebsocketHelper {
         else direction = +(fromUserInfo.userType === 'CUSTOMER');
       }
     }
-    let isRead = message.id <= lrmId;
-    if (fromUserInfo && fromUserInfo.userType === 'ROBOT') {
-      isRead = true;
-    }
+    const isRead = message.id <= lrmId;
     const resultMessage = {
       isSystemMessage,
       direction,

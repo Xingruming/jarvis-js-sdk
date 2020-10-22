@@ -159,7 +159,7 @@ class Client {
    */
   isOpened() {
     return this.#websocketHelper.websocket
-      && this.#websocketHelper.websocket.readyState === WebSocket.OPEN;
+        && this.#websocketHelper.websocket.readyState === WebSocket.OPEN;
   }
 
   /**
@@ -168,7 +168,7 @@ class Client {
    */
   isConnecting() {
     return this.#websocketHelper.websocket
-      && this.#websocketHelper.websocket.readyState === WebSocket.CONNECTING;
+        && this.#websocketHelper.websocket.readyState === WebSocket.CONNECTING;
   }
 
   /**
