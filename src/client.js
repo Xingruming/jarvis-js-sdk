@@ -570,7 +570,7 @@ class Client {
    * @returns {Promise}
    */
   getHotFaqs(groupID, limit, page) {
-    return this.#request.get('/hot_faqs/', {
+    return this.#request.get('/hot_faqs', {
       params: {
         limit,
         page,
