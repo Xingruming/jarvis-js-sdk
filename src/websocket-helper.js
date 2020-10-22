@@ -259,7 +259,10 @@ export class WebsocketHelper {
         else direction = +(fromUserInfo.userType === 'CUSTOMER');
       }
     }
-    const isRead = message.id <= lrmId;
+    let isRead = message.id <= lrmId;
+    if (fromUserInfo && fromUserInfo.userType === 'ROBOT') {
+      isRead = true;
+    }
     const resultMessage = {
       isSystemMessage,
       direction,
