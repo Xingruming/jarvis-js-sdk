@@ -80,7 +80,7 @@
         * [.getConversations(params)](#Client+getConversations) ⇒ <code>Promise</code>
         * [.getConversationById(conversationId)](#Client+getConversationById) ⇒ <code>Promise</code>
         * [.updateUserProfile(id, data)](#Client+updateUserProfile) ⇒ <code>Promise</code>
-        * [.rateStaff(score)](#Client+rateStaff) ⇒ <code>Promise</code>
+        * [.rateStaff(score, suggestion, ratingTagIds)](#Client+rateStaff) ⇒ <code>Promise</code>
         * [.getVisitInfo(id)](#Client+getVisitInfo) ⇒ <code>Promise</code>
         * [.getPendingCount()](#Client+getPendingCount) ⇒ <code>Promise</code>
         * [.addCustomerTag(id, data)](#Client+addCustomerTag) ⇒ <code>Promise</code>
@@ -103,6 +103,7 @@
         * [.getCurrentConversationList()](#Client+getCurrentConversationList) ⇒ <code>Promise</code>
         * [.getSubChannel(subChannelId)](#Client+getSubChannel) ⇒ <code>Promise</code>
         * [.getHotFaqs(groupID, limit, page)](#Client+getHotFaqs) ⇒ <code>Promise</code>
+        * [.getRatings()](#Client+getRatings) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
@@ -312,7 +313,7 @@ WebSocket是否正在连接
 
 <a name="Client+rateStaff"></a>
 
-### client.rateStaff(score) ⇒ <code>Promise</code>
+### client.rateStaff(score, suggestion, ratingTagIds) ⇒ <code>Promise</code>
 评价客服
 
 **Kind**: instance method of [<code>Client</code>](#Client)  
@@ -320,6 +321,8 @@ WebSocket是否正在连接
 | Param | Type | Description |
 | --- | --- | --- |
 | score | <code>number</code> | 分数, 1-5 |
+| suggestion | <code>string</code> | 评语 |
+| ratingTagIds | <code>Array.&lt;number&gt;</code> | TagId |
 
 <a name="Client+getVisitInfo"></a>
 
@@ -555,6 +558,12 @@ WebSocket是否正在连接
 | limit | 
 | page | 
 
+<a name="Client+getRatings"></a>
+
+### client.getRatings() ⇒ <code>Promise</code>
+获取评分等级
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
 <a name="Client.getAnonymousToken"></a>
 
 ### Client.getAnonymousToken() ⇒ <code>Promise</code>

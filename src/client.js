@@ -331,10 +331,12 @@ class Client {
   /**
    * 评价客服
    * @param {number} score 分数, 1-5
+   * @param {string} suggestion 评语
+   * @param {number[]} ratingTagIds TagId
    * @returns {Promise}
    */
-  rateStaff(score) {
-    return this.#request.post('/im/rates', { score });
+  rateStaff(score, suggestion = '', ratingTagIds = []) {
+    return this.#request.post('/im/rates', { score, suggestion, ratingTagIds });
   }
 
   /**
@@ -577,6 +579,14 @@ class Client {
         group_id: groupID,
       },
     });
+  }
+
+  /**
+   * 获取评分等级
+   * @returns {Promise}
+   */
+  getRatings() {
+    return this.#request.get('/ratings');
   }
 }
 
