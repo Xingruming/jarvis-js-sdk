@@ -131,10 +131,11 @@ class Client {
    * @param {string} options.token Token
    * @param {number} options.subChannelId 子渠道ID
    * @param {boolean} options.debug 开启调试模式
+   * @param {boolean} options.retry 请求重试
    */
   constructor(handler, options = {}) {
     this.#websocketHelper = new WebsocketHelper(handler, options);
-    this.#request = createRequest(options.token);
+    this.#request = createRequest(options.token, options.retry);
   }
 
   /**
