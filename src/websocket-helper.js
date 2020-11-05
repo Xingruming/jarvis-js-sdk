@@ -239,6 +239,7 @@ export class WebsocketHelper {
       users,
       unreadCount,
       messages,
+      isNew: !lrmIds[myUserId],
     };
   }
 
