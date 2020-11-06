@@ -239,7 +239,7 @@ export class WebsocketHelper {
       users,
       unreadCount,
       messages,
-      isNew: !lrmIds[myUserId],
+      isNew: !lrmIds[myUserId] && conversation.state !== 'FINISHED',
     };
   }
 
