@@ -13,9 +13,8 @@ export function createRequest(token = '', enableRetry = false) {
     service.defaults.raxConfig = {
       instance: service,
       httpMethodsToRetry: ['GET', 'HEAD', 'OPTIONS'],
-      retry: 2,
-      noResponseRetries: 2,
-      retryDelay: 100,
+      retry: 3,
+      noResponseRetries: 3,
       backoffType: 'exponential',
       statusCodesToRetry: [[401, 499], [500, 599]],
       onRetryAttempt: (err) => {

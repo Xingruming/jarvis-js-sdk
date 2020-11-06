@@ -132,6 +132,7 @@
 | options.token | <code>string</code> | Token |
 | options.subChannelId | <code>number</code> | 子渠道ID |
 | options.debug | <code>boolean</code> | 开启调试模式 |
+| options.retry | <code>boolean</code> | 请求重试 |
 
 <a name="Client+open"></a>
 
