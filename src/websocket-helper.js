@@ -56,7 +56,8 @@ export class WebsocketHelper {
     this.pingTimer = setTimeout(() => {
       this.sendPing();
       this.pongTimeoutTimer = setTimeout(() => {
-        this.websocket.close(3000, 'no pong');
+        this.websocket.close();
+        this.handler.onClose({ code: 1006, reason: 'no pong' });
       }, PONG_TIMEOUT);
       this.setPingTimer();
     }, PING_INTERVAL);
