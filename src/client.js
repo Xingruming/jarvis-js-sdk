@@ -589,6 +589,16 @@ class Client {
   getRatings() {
     return this.#request.get('/ratings');
   }
+
+  /**
+   * 更改会话备注
+   * @param id
+   * @param data
+   * @returns {Promise}
+   */
+  updateConversationRemark(id, data) {
+    return this.#request.put(`/im/conversations/${id}`, data);
+  }
 }
 
 export default Client;

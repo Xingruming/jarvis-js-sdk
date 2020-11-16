@@ -104,6 +104,7 @@
         * [.getSubChannel(subChannelId)](#Client+getSubChannel) ⇒ <code>Promise</code>
         * [.getHotFaqs(groupID, limit, page)](#Client+getHotFaqs) ⇒ <code>Promise</code>
         * [.getRatings()](#Client+getRatings) ⇒ <code>Promise</code>
+        * [.updateConversationRemark(id, data)](#Client+updateConversationRemark) ⇒ <code>Promise</code>
     * _static_
         * [.getAnonymousToken()](#Client.getAnonymousToken) ⇒ <code>Promise</code>
 
@@ -565,6 +566,18 @@ WebSocket是否正在连接
 获取评分等级
 
 **Kind**: instance method of [<code>Client</code>](#Client)  
+<a name="Client+updateConversationRemark"></a>
+
+### client.updateConversationRemark(id, data) ⇒ <code>Promise</code>
+更改会话备注
+
+**Kind**: instance method of [<code>Client</code>](#Client)  
+
+| Param |
+| --- |
+| id | 
+| data | 
+
 <a name="Client.getAnonymousToken"></a>
 
 ### Client.getAnonymousToken() ⇒ <code>Promise</code>
