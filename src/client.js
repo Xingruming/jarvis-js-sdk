@@ -532,7 +532,7 @@ class Client {
    * @returns {Promise}
    */
   getSuggestions(query, subChannelId = 0) {
-    return this.#request.get(`/im/questions/suggest?query=${query}?sub_channel_id=${subChannelId}`);
+    return this.#request.get(`/im/questions/suggest?query=${query}&sub_channel_id=${subChannelId}`);
   }
 
   /**
