@@ -528,10 +528,11 @@ class Client {
   /**
    * 问题自动补全
    * @param query
+   * @param subChannelId
    * @returns {Promise}
    */
-  getSuggestions(query) {
-    return this.#request.get(`/im/questions/suggest?query=${query}`);
+  getSuggestions(query, subChannelId = 0) {
+    return this.#request.get(`/im/questions/suggest?query=${query}?sub_channel_id=${subChannelId}`);
   }
 
   /**

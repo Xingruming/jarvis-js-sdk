@@ -98,7 +98,7 @@
         * [.uploadBlobs(file, onUploadProgress)](#Client+uploadBlobs) ⇒ <code>Promise</code>
         * [.likeRobotAnswer(id)](#Client+likeRobotAnswer) ⇒ <code>Promise</code>
         * [.dislikeRobotAnswer(msgId)](#Client+dislikeRobotAnswer) ⇒ <code>Promise</code>
-        * [.getSuggestions(query)](#Client+getSuggestions) ⇒ <code>Promise</code>
+        * [.getSuggestions(query, subChannelId)](#Client+getSuggestions) ⇒ <code>Promise</code>
         * [.getPendingPosition(convId)](#Client+getPendingPosition) ⇒ <code>Promise</code>
         * [.getCurrentConversationList()](#Client+getCurrentConversationList) ⇒ <code>Promise</code>
         * [.getSubChannel(subChannelId)](#Client+getSubChannel) ⇒ <code>Promise</code>
@@ -510,14 +510,15 @@ WebSocket是否正在连接
 
 <a name="Client+getSuggestions"></a>
 
-### client.getSuggestions(query) ⇒ <code>Promise</code>
+### client.getSuggestions(query, subChannelId) ⇒ <code>Promise</code>
 问题自动补全
 
 **Kind**: instance method of [<code>Client</code>](#Client)  
 
-| Param |
-| --- |
-| query | 
+| Param | Default |
+| --- | --- |
+| query |  | 
+| subChannelId | <code>0</code> | 
 
 <a name="Client+getPendingPosition"></a>
 
