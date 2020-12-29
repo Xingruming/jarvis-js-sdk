@@ -41,7 +41,14 @@ export function createRequest(token = '', enableRetry = false) {
       response.data = humps.camelizeKeys(response.data);
       return response;
     },
-    (error) => Promise.reject(error),
+    (error) => {
+      const { request } = error;
+      if (request) {
+        // eslint-disable-next-line no-console
+        console.error('Request Error: ', request.method, request.url, request.params);
+      }
+      return Promise.reject(error);
+    },
   );
 
   return service;

@@ -225,7 +225,7 @@ export class WebsocketHelper {
     }, {});
     const otherUserId = this.#userInfoMap.me.userType === 'CUSTOMER' ? lastStaff.id : customer.id;
     let lrmId = lrmIds[otherUserId];
-    if (lastStaff.userType === 'ROBOT' && conversation.messages.length) {
+    if (conversation.state === 'ACTIVE' && lastStaff.userType === 'ROBOT' && conversation.messages.length) {
       lrmId = conversation.messages[conversation.messages.length - 1].id;
     }
     const messages = conversation.messages
