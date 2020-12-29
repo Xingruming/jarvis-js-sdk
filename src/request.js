@@ -42,11 +42,11 @@ export function createRequest(token = '', enableRetry = false) {
       return response;
     },
     (error) => {
-      const { request } = error;
-      if (request) {
-        // eslint-disable-next-line no-console
-        console.error('Request Error: ', request.method, request.url, request.params);
-      }
+      const { config } = error;
+      // eslint-disable-next-line no-console
+      console.error('Request Error: ', config.method, config.url);
+      // eslint-disable-next-line no-console
+      console.error(error);
       return Promise.reject(error);
     },
   );
