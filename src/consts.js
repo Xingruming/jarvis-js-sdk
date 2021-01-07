@@ -15,6 +15,7 @@ export const MessageType = {
   9: 'RobotMayAnswerMessage',
   10: 'FAQAnswerMessage',
   11: 'OrderMessage',
+  12: 'StaffTimeoutMessage',
   101: 'ManualServiceStart',
   102: 'ConversationBuilt',
   103: 'MessageRecall',

@@ -53,6 +53,9 @@
 <dt><a href="#OnInputting">OnInputting</a> : <code>function</code></dt>
 <dd><p>会话转接回调函数</p>
 </dd>
+<dt><a href="#OnStaffTimeout">OnStaffTimeout</a> : <code>function</code></dt>
+<dd><p>客服回复超时回调函数</p>
+</dd>
 </dl>
 
 <a name="Client"></a>
@@ -738,5 +741,16 @@ WebSocket错误回调函数
 | Param | Type | Description |
 | --- | --- | --- |
 | content | <code>string</code> | 消息内容 |
+| conversationId | <code>number</code> | 会话ID |
+
+<a name="OnStaffTimeout"></a>
+
+## OnStaffTimeout : <code>function</code>
+客服回复超时回调函数
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
 | conversationId | <code>number</code> | 会话ID |
 

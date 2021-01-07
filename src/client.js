@@ -107,6 +107,12 @@ import { createRequest } from './request';
  * @param {number} conversationId 会话ID
  */
 
+/**
+ * 客服回复超时回调函数
+ * @callback OnStaffTimeout
+ * @param {number} conversationId 会话ID
+ */
+
 class Client {
   #websocketHelper
 

@@ -105,6 +105,11 @@ export class WebsocketHelper {
           this.handler.onConversationTransfer(message.conversationId);
         }
         break;
+      case 'StaffTimeoutMessage':
+        if (this.handler.onStaffTimeout) {
+          this.handler.onStaffTimeout(message.conversationId);
+        }
+        break;
     }
   }
 
